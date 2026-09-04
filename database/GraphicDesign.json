@@ -1,35 +1,46 @@
 [
   {
-    "id": "1",
-    "title": "Brand Identity & Visual System",
+    "title": "Industrial edge",
+    "category": "Product advertisement",
+    "description": "",
+    "image": "/uploads/1788435001801_industrial_edge_sep.jpg",
+    "url": "",
+    "date": "2026",
+    "tags": "",
+    "status": true,
+    "id": "1788435006596"
+  },
+  {
+    "title": "Tawakkal",
     "category": "Branding & Typography",
-    "description": "Modern typography, logo design, and visual brand identity system created for digital products.",
-    "image": "/reference/sample.jpg",
+    "description": "",
+    "image": "/uploads/1788435397839_TAWAKKAL.jpg",
     "url": "",
-    "date": "2024",
+    "date": "2026",
+    "tags": "",
     "status": true,
-    "tags": "Branding, Typography, Photoshop"
+    "id": "1788435400874"
   },
   {
-    "id": "2",
-    "title": "Creative Poster & Editorial Layout",
-    "category": "Poster & Print",
-    "description": "Experimental poster layouts, color palettes, and artwork compositions.",
-    "image": "/reference/sample.jpg",
+    "title": "Techmire Solutions",
+    "category": "Marketing Post",
+    "description": "",
+    "image": "/uploads/1788435484342_tms_sept.jpg",
     "url": "",
-    "date": "2024",
+    "date": "2026",
+    "tags": "",
     "status": true,
-    "tags": "Poster, Graphic Design, Illustrator"
+    "id": "1788435486082"
   },
   {
-    "id": "3",
-    "title": "Social Media Visual Campaign",
-    "category": "Digital Media & Banner",
-    "description": "Engaging social media graphics, banner concepts, and promotional visual content.",
-    "image": "/reference/sample.jpg",
+    "title": "Codexplus",
+    "category": "Tech Post",
+    "description": "",
+    "image": "/uploads/1788435631146_Codexplus_august__1_.jpg",
     "url": "",
-    "date": "2024",
+    "date": "2026",
+    "tags": "",
     "status": true,
-    "tags": "Social Media, Banner, UI Art"
+    "id": "1788435632546"
   }
 ]

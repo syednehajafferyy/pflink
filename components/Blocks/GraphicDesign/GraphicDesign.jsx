@@ -7,13 +7,22 @@ import styles from './GraphicDesign.module.css';
 import Container from '@/components/UI/Layout/Layout';
 import Title from '@/components/UI/Elements/Title/Title';
 import Blobs from '@/components/UI/Elements/Blobs/Blobs';
-import FadeIn from '@/components/UI/FadeIn/FadeIn';
 
 import initialPosts from '@/database/GraphicDesign.json';
+
+const fallbackImage = '/reference/aliel.jpg';
 
 export default function GraphicDesign() {
     const [posts, setPosts] = useState(initialPosts);
     const [selectedImage, setSelectedImage] = useState(null);
+    const gridRef = useRef(null);
+
+    const scrollCards = (direction) => {
+        gridRef.current?.scrollBy({
+            left: direction * (gridRef.current.clientWidth * 0.78),
+            behavior: 'smooth'
+        });
+    };
 
     useEffect(() => {
         async function fetchGraphicDesignPosts() {
@@ -50,15 +59,14 @@ export default function GraphicDesign() {
                     </div>
                 </header>
 
-                <div className={styles.grid}>
+                <div className={styles.grid} ref={gridRef}>
                     {activePosts.map((item, index) => {
                         const tagList = item.tags
                             ? (Array.isArray(item.tags) ? item.tags : item.tags.split(',').map(t => t.trim()))
                             : [];
 
                         return (
-                            <FadeIn key={item.id || index} y={30} delay={index * 0.1}>
-                                <article className={styles.card}>
+                                <article key={item.id || index} className={styles.card}>
                                     <div 
                                         className={styles.imageWrapper} 
                                         onClick={() => setSelectedImage(item)}
@@ -67,7 +75,7 @@ export default function GraphicDesign() {
                                             <span className={styles.categoryBadge}>{item.category}</span>
                                         )}
                                         <Image
-                                            src={item.image || '/reference/sample.jpg'}
+                                            src={item.image && item.image !== '/reference/sample.jpg' ? item.image : fallbackImage}
                                             alt={item.title || 'Graphic Design Work'}
                                             width={800}
                                             height={600}
@@ -110,10 +118,25 @@ export default function GraphicDesign() {
                                         </div>
                                     </div>
                                 </article>
-                            </FadeIn>
                         );
                     })}
                 </div>
+                <button
+                    type="button"
+                    className={`${styles.sliderButton} ${styles.buttonPrev}`}
+                    onClick={() => scrollCards(-1)}
+                    aria-label="Previous graphic design projects"
+                >
+                    <span aria-hidden="true">&#8592;</span>
+                </button>
+                <button
+                    type="button"
+                    className={`${styles.sliderButton} ${styles.buttonNext}`}
+                    onClick={() => scrollCards(1)}
+                    aria-label="Next graphic design projects"
+                >
+                    <span aria-hidden="true">&#8594;</span>
+                </button>
             </Container>
 
             {/* Image Modal Preview */}
@@ -122,7 +145,7 @@ export default function GraphicDesign() {
                     <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
                         <button className={styles.closeBtn} onClick={() => setSelectedImage(null)}>×</button>
                         <Image
-                            src={selectedImage.image || '/reference/sample.jpg'}
+                            src={selectedImage.image && selectedImage.image !== '/reference/sample.jpg' ? selectedImage.image : fallbackImage}
                             alt={selectedImage.title}
                             width={1200}
                             height={900}
